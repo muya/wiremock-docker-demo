@@ -1,0 +1,11 @@
+---
+version: '3.9'
+services:
+  wiremock:
+    image: rodolpheche/wiremock
+    volumes:
+      - $PWD/wiremock:/home/wiremock
+    ports:
+      - 8080:8080
+    command:
+      - --verbose
