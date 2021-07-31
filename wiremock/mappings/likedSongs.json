@@ -1,4 +1,8 @@
 {
+    "metadata": {
+        "description": "Demonstrates Wiremock's ability to simulate an API response.",
+        "blogPost": "https://blog.muya.co.ke/wiremock-response-templating/"
+    },
     "request": {
         "method": "GET",
         "url": "/api/songs"

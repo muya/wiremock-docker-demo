@@ -1,0 +1,36 @@
+{
+    "metadata": {
+        "description": "Demonstrates Wiremock's ability to simulate an API response with templated request parameters",
+        "blogPost": "https://blog.muya.co.ke/wiremock-response-templating-part-2/"
+    },
+    "request": {
+        "method": "ANY",
+        "urlPattern": "/api/songs\\?search=([a-z]*)"
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "jsonBody": {
+            "metadata": {
+                "searchQueryParam": "{{ request.query.search.0 }}",
+                "requestMethodType": "{{ request.method }}"
+            },
+            "data": [
+                {
+                    "id": "8efe58ee-a5cf-4926-bcd2-92c7e2ec82ba",
+                    "songInfo": "Jam Now, Simmer Down - Blinky Bill",
+                    "likedOn": "2021-06-19",
+                    "listenCount": 34
+                },
+                {
+                    "id": "724d520f-15b0-4c2f-9999-a28b2531195c",
+                    "songInfo": "Dunia Ina Mambo - Just a Band",
+                    "likedOn": "2020-12-04",
+                    "listenCount": 182
+                }
+            ]
+        }
+    }
+}
