@@ -4,8 +4,8 @@
         "blogPost": "https://blog.muya.co.ke/wiremock-response-templating-part-2/"
     },
     "request": {
-        "method": "GET",
-        "urlPattern": "/api/songs\\?search=([a-z]*)"
+        "method": "ANY",
+        "urlPattern": "/api/songs\\?dynamic=true"
     },
     "response": {
         "status": 200,
@@ -14,20 +14,20 @@
         },
         "jsonBody": {
             "metadata": {
-                "searchQueryParam": "{{ request.query.search.0 }}",
-                "requestMethodType": "{{ request.method }}"
+                "requestMethodType": "{{ request.method }}",
+                "requestedAt": "{{ now timezone='Africa/Nairobi' format='yyyy-MM-dd HH:mm:ss.SSSSSS' }}"
             },
             "data": [
                 {
                     "id": "8efe58ee-a5cf-4926-bcd2-92c7e2ec82ba",
-                    "songInfo": "Jam Now, Simmer Down - Blinky Bill",
-                    "likedOn": "2021-06-19",
+                    "songInfo": "{{ upper 'Jam Now, Simmer Down - Blinky Bill' }}",
+                    "likedOn": "{{ dateFormat (parseDate '2021-06-21' format='yyyy-MM-dd') format='full' }}",
                     "listenCount": 34
                 },
                 {
                     "id": "724d520f-15b0-4c2f-9999-a28b2531195c",
-                    "songInfo": "Dunia Ina Mambo - Just a Band",
-                    "likedOn": "2020-12-04",
+                    "songInfo": "{{ upper 'Dunia Ina Mambo - Just a Band' }}",
+                    "likedOn": "{{ dateFormat (parseDate '2021-12-04' format='yyyy-MM-dd') format='full' }}",
                     "listenCount": 182
                 }
             ]
